@@ -1,19 +1,18 @@
-import { useState } from "react";
-
-const App = () => {
-  const [count, setCount] = useState(0);
-
-  const handleCount = () => {
-    setCount((prev) => prev + 10);
-  };
+import HooksCounter from "./components/HooksCounter";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+export default function App() {
   return (
-    <>
-      <h1>{count}</h1>
-      <button className="bg-gray-700 mt-5" onClick={handleCount}>
-        Increment
-      </button>
-    </>
-  );
-};
+    <Provider store={store}>
+      <div className="w-screen h-screen p-10 bg-gray-100 text-slate-700">
+        <h1 className="max-w-md mx-auto text-center text-2xl font-bold">
+          Simple Counter Application
+        </h1>
 
-export default App;
+        <div className="max-w-md mx-auto mt-10 space-y-5">
+          <HooksCounter />
+        </div>
+      </div>
+    </Provider>
+  );
+}
